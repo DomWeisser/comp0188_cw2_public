@@ -10,7 +10,7 @@ from pymlrf.types import (
     GenericDataLoaderProtocol
     )
 
-class TrainSingleEpoch:
+class TrainSingleEpochNew:
     
     def __init__(
         self, 
