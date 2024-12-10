@@ -8,7 +8,7 @@ from pymlrf.types import (
     GenericDataLoaderProtocol
     )
 
-class ValidateSingleEpoch:
+class ValidateSingleEpochNew:
     
     def __init__(
         self, 
