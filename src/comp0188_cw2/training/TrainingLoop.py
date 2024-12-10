@@ -15,8 +15,8 @@ torch.autograd.set_detect_anomaly(True)
 
 from ..Metric.WandBMetricOrchestrator import WandBMetricOrchestrator
 from ..models.base import BaseModel
-from .train_single_epoch import TrainSingleEpoch
-from .validate_single_epoch import ValidateSingleEpoch
+from .train_single_epoch import TrainSingleEpochNew
+from .validate_single_epoch import ValidateSingleEpochNew
 
 def train(
     model:torch.nn.Module,
@@ -29,8 +29,8 @@ def train(
     logger:logging.Logger,
     save_dir:str,
     scheduler:torch.optim.lr_scheduler.LRScheduler=None,
-    train_epoch_func:TrainSingleEpochProtocol = TrainSingleEpoch(),
-    val_epoch_func:ValidateSingleEpochProtocol = ValidateSingleEpoch(),
+    train_epoch_func:TrainSingleEpochProtocol = TrainSingleEpochNew(),
+    val_epoch_func:ValidateSingleEpochProtocol = ValidateSingleEpochNew(),
     seed: int = None,
     mo: WandBMetricOrchestrator = WandBMetricOrchestrator(),
     val_criterion:Optional[CriterionProtocol] = None,
@@ -292,11 +292,11 @@ class TorchTrainingLoop:
         seed = 1,
         mo = self.mo,
         val_criterion = self.val_criterion,
-        train_epoch_func = TrainSingleEpoch(
+        train_epoch_func = TrainSingleEpochNew(
           half_precision=self.half_precision,
           cache_preds=self.cache_preds
           ),
-        val_epoch_func = ValidateSingleEpoch(
+        val_epoch_func = ValidateSingleEpochNew(
           half_precision=self.half_precision,
           cache_preds=self.cache_preds
           ),
